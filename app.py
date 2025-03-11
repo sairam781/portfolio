@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import smtplib
+import os
 
 app = Flask(__name__)
 
@@ -14,9 +15,9 @@ def submit():
     phone = request.form["phone"]
     message = request.form["message"]
 
-    # Email settings
-    sender_email = "your_email@gmail.com"
-    sender_password = "your_password"
+    # Email settings using environment variables
+    sender_email = os.environ.get("EMAIL_USER")
+    sender_password = os.environ.get("EMAIL_PASSWORD")
     receiver_email = "ramsriram9858@gmail.com"
 
     # Email content
